@@ -1,0 +1,15 @@
+name: PreValidation
+
+on:
+  schedule:
+    - cron:  '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  PreValidation:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Run PreValidation
+      run: echo "Running PreValidation"
