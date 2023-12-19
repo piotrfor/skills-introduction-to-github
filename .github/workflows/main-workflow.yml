@@ -1,0 +1,32 @@
+name: ValidationMain
+
+on:
+  schedule:
+    - cron:  '0 */6 * * *'
+
+jobs:
+  PreValidation:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Run PreValidation
+      run: echo "Running PreValidation"
+
+  Validation:
+    needs: PreValidation
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Run Validation
+      run: echo "Running Validation"
+
+  PostValidation:
+    needs: Validation
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Run PostValidation
+      run: echo "Running PostValidation"
